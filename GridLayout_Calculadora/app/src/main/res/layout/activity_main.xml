@@ -189,7 +189,6 @@
         android:layout_rowSpan="2"
         android:layout_rowWeight="1"
         android:layout_columnWeight="1"
-        android:layout_gravity="fill_vertical"
         android:background="#EC3216"
         android:onClick="onclickIgual"
         android:text="="

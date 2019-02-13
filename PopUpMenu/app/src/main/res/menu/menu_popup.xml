@@ -3,10 +3,17 @@
 
     <item
         android:id="@+id/menu_reply"
+        android:icon="@mipmap/ic_launcher"
         android:title="@string/menu_reply" />
     <item
         android:id="@+id/menu_reply_all"
-        android:title="@string/menu_reply_all" />
+        android:title="@string/menu_reply_all" >
+
+        <menu xmlns:android="http://schemas.android.com/apk/res/android">
+            <item android:title="Submenu"/>
+            <item android:title="Submenu"/>
+        </menu>
+    </item>
 
     <item android:id="@+id/menu_forward"
         android:title="@string/menu_forward" />

@@ -7,8 +7,6 @@ import android.view.View;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-
 public class MainActivity extends AppCompatActivity {
 
     private PopupMenu.OnMenuItemClickListener mOnMenuItemClickListener = new
@@ -43,8 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void showPopupMenu(View view) {
         PopupMenu popupMenu = new PopupMenu(MainActivity.this,view);
-        popupMenu.inflate(R.menu.menu_popup);
-        popupMenu.setOnMenuItemClickListener(mOnMenuItemClickListener);
+       popupMenu.getMenu().add("Hola");
         popupMenu.show();
     }
 }

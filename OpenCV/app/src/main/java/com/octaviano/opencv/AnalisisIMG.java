@@ -24,14 +24,31 @@ public class AnalisisIMG {
 
         Mat src_gray = new Mat();
 
+
         Imgproc.cvtColor(src, src_gray, Imgproc.COLOR_BGR2GRAY);
-        Imgproc.equalizeHist(src_gray,src_gray);
         Imgproc.GaussianBlur(src_gray, src_gray, new Size(9, 9), 2, 2);
+        Imgproc.Canny(src_gray, src_gray, 32, 2);
+
+
+
+        //Imgproc.morphologyEx(src_gray,src_gray,4,Imgproc.getStructuringElement(Imgproc.MORPH_RECT, new Size(11, 11)));
+        //Imgproc.threshold(src_gray,src_gray,127,255,Imgproc.THRESH_OTSU);
+        //Imgproc.GaussianBlur(src_gray, src_gray, new Size(9, 9), 2, 2);
+        /*
+        Imgproc.equalizeHist(src_gray,src_gray);
+        final Size kernelSize = new Size(11, 11);
+        final Point anchor = new Point(1, 1);
+        final int iterations = 1;
+        Mat kernel = Imgproc.getStructuringElement(Imgproc.MORPH_ELLIPSE, kernelSize);
+        Imgproc.erode(src_gray, src_gray, kernel, anchor, iterations);
+        Imgproc.dilate(src_gray, src_gray, kernel, anchor, iterations);
+        Imgproc.Canny(src_gray, src_gray, 32, 2);*/
+
 
 
         Mat circles = new Mat();
 
-        Imgproc.HoughCircles( src_gray, circles, Imgproc.CV_HOUGH_GRADIENT, 1, src_gray.height()/6, 200, 100, 0, 0 );
+        Imgproc.HoughCircles( src_gray, circles, Imgproc.CV_HOUGH_GRADIENT, 2, src_gray.height()/4 );
 
         Log.w("circles", circles.cols() + "");
 
@@ -46,7 +63,7 @@ public class AnalisisIMG {
             Imgproc.circle(src, center, radius, new Scalar(0, 0, 255), 3, 8, 0);
         }
 
-        Utils.matToBitmap(src, bmp);
+        Utils.matToBitmap(src_gray, bmp);
         return bmp;
     }
 

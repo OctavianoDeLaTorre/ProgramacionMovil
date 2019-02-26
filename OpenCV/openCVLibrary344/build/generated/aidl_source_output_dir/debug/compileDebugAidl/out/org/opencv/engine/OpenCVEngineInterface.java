@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Original file: /home/octaviano/AndroidStudioProjects/OpenCV/openCVLibrary344/src/main/aidl/org/opencv/engine/OpenCVEngineInterface.aidl
+ * Original file: /home/octaviano/Documentos/ITSJ/Semestre 8/Android/Proyectos/OpenCV/openCVLibrary344/src/main/aidl/org/opencv/engine/OpenCVEngineInterface.aidl
  */
 package org.opencv.engine;
 /**

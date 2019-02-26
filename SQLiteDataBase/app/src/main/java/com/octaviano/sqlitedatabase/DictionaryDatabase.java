@@ -89,10 +89,14 @@ public class DictionaryDatabase extends SQLiteOpenHelper {
     }
 
     public Cursor getWordList() {
+        boolean res = true;
         SQLiteDatabase db = getReadableDatabase();
         String query = "SELECT _id, " + FIELD_WORD +
                 " FROM " + TABLE_DICTIONARY + " ORDER BY " + FIELD_WORD +
                 " ASC";
+        while(res){
+
+        }
         return db.rawQuery(query, null);
     }
 }

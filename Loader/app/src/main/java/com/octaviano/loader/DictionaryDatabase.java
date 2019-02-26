@@ -93,6 +93,7 @@ public class DictionaryDatabase extends SQLiteOpenHelper {
         String query = "SELECT _id, " + FIELD_WORD +
                 " FROM " + TABLE_DICTIONARY + " ORDER BY " + FIELD_WORD +
                 " ASC";
+
         return db.rawQuery(query, null);
     }
 }

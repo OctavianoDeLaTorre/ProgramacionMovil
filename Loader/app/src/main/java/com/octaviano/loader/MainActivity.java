@@ -52,11 +52,11 @@ public class MainActivity extends AppCompatActivity
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(MainActivity.this, "Records deleted = " + mDB.deleteRecord(id),
                         Toast.LENGTH_SHORT).show();
-                getSupportLoaderManager().restartLoader(0, null, MainActivity.this);
+                LoaderManager.getInstance(MainActivity.this).restartLoader(0, null, MainActivity.this);
                 return true;
             }
         });
-        getSupportLoaderManager().initLoader(0, null, this);
+        LoaderManager.getInstance(MainActivity.this).initLoader(0, null, this);
         mAdapter = new DictionaryAdapter(this,mDB.getWordList(),0);
         mListView.setAdapter(mAdapter);
     }
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity
         mDB.saveRecord(mEditTextWord.getText().toString(), mEditTextDefinition.getText().toString());
         mEditTextWord.setText("");
         mEditTextDefinition.setText("");
-        getSupportLoaderManager().restartLoader(0, null, MainActivity.this);
+        LoaderManager.getInstance(MainActivity.this).restartLoader(0, null, MainActivity.this);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.octaviano.sqlitedatabase;
 
+import android.os.AsyncTask;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     EditText mEditTextDefinition;
     DictionaryDatabase mDB;
     ListView mListView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,14 +51,14 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-        updateWordList();
+
     }
 
     private void saveRecord() {
         mDB.saveRecord(mEditTextWord.getText().toString(), mEditTextDefinition.getText().toString());
         mEditTextWord.setText("");
         mEditTextDefinition.setText("");
-        updateWordList();
+        new Consulta().execute();
     }
 
     private void updateWordList() {
@@ -67,6 +69,26 @@ public class MainActivity extends AppCompatActivity {
                 new String[]{"word"},
                 new int[]{android.R.id.text1},
                 0);
+
         mListView.setAdapter(simpleCursorAdapter);
     }
+
+
+    class Consulta extends AsyncTask<Void, Void,Void>{
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            SimpleCursorAdapter simpleCursorAdapter = new SimpleCursorAdapter(
+                    MainActivity.this,
+                    android.R.layout.simple_list_item_1,
+                    mDB.getWordList(),
+                    new String[]{"word"},
+                    new int[]{android.R.id.text1},
+                    0);
+
+            mListView.setAdapter(simpleCursorAdapter);
+            return null;
+        }
+    }
+
 }

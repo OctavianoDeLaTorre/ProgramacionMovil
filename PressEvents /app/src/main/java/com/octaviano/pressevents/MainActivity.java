@@ -6,7 +6,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+
+    View.OnClickListener event = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Toast.makeText(MainActivity.this, "Click", Toast.LENGTH_SHORT).show();
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -14,12 +21,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button button = findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Click", Toast.LENGTH_SHORT).show();
-            }
-        });
+        Button b2 = findViewById(R.id.button2);
+        b2.setOnClickListener(this);
+        button.setOnClickListener(this);
         button.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -27,5 +31,25 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
+
+
+    public void click(View v){
+        Toast.makeText(MainActivity.this, "Click", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        switch (v.getId()){
+            case R.id.button:
+                Toast.makeText(MainActivity.this, "Boton 1", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.button2:
+                Toast.makeText(MainActivity.this, "Boton 2", Toast.LENGTH_SHORT).show();
+                break;
+        }
+
     }
 }

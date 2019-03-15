@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
@@ -17,7 +18,17 @@ public class MainActivity extends AppCompatActivity {
         final ImageView view = findViewById(R.id.imageView);
 
         final Animation blink = AnimationUtils.loadAnimation(this,R.anim.blink);
-        
+
+        final Animation rotacion = AnimationUtils.loadAnimation(this,R.anim.rotacion);
+
+        Button btnRotacion = findViewById(R.id.rotacion);
+
+        btnRotacion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                view.startAnimation(rotacion);
+            }
+        });
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override

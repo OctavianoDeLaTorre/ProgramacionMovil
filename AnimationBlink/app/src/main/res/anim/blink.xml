@@ -5,7 +5,7 @@
         android:toAlpha="0.0"
         android:background="#000000"
         android:interpolator="@android:anim/bounce_interpolator"
-        android:duration="1000"
+        android:duration="100"
         android:repeatMode="restart"
         android:repeatCount="10"/>
 
